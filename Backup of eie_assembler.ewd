@@ -11,7 +11,7 @@
             <name>C-SPY</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>32</version>
+                <version>28</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -44,7 +44,7 @@
                 </option>
                 <option>
                     <name>MemFile</name>
-                    <state>$TOOLKIT_DIR$\CONFIG\debugger\Microchip\ATSAM3U2E.ddf</state>
+                    <state>$TOOLKIT_DIR$\CONFIG\debugger\Atmel\ATSAM3U2E.ddf</state>
                 </option>
                 <option>
                     <name>RunToEnable</name>
@@ -88,7 +88,7 @@
                 </option>
                 <option>
                     <name>OCLastSavedByProductVersion</name>
-                    <state>8.50.6.28950</state>
+                    <state>8.10.1.12859</state>
                 </option>
                 <option>
                     <name>UseFlashLoader</name>
@@ -112,7 +112,7 @@
                 </option>
                 <option>
                     <name>FlashLoadersV3</name>
-                    <state>$TOOLKIT_DIR$\config\flashloader\Microchip\sam3u2\sam3u2-flash.board</state>
+                    <state>$TOOLKIT_DIR$\config\flashloader\Atmel\sam3u2e\sam3u2e-flash.board</state>
                 </option>
                 <option>
                     <name>OCImagesSuppressCheck1</name>
@@ -183,6 +183,14 @@
                     <state>1</state>
                 </option>
                 <option>
+                    <name>OCMulticoreMaster</name>
+                    <state>0</state>
+                </option>
+                <option>
+                    <name>OCMulticorePort</name>
+                    <state>53461</state>
+                </option>
+                <option>
                     <name>OCMulticoreWorkspace</name>
                     <state></state>
                 </option>
@@ -201,26 +209,6 @@
                 <option>
                     <name>OCAttachSlave</name>
                     <state>0</state>
-                </option>
-                <option>
-                    <name>MassEraseBeforeFlashing</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>OCMulticoreNrOfCoresSlave</name>
-                    <state>1</state>
-                </option>
-                <option>
-                    <name>OCMulticoreAMPConfigType</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>OCMulticoreSessionFile</name>
-                    <state></state>
-                </option>
-                <option>
-                    <name>OCTpiuBaseOption</name>
-                    <state>1</state>
                 </option>
             </data>
         </settings>
@@ -958,27 +946,6 @@
             </data>
         </settings>
         <settings>
-            <name>NULINK_ID</name>
-            <archiveVersion>2</archiveVersion>
-            <data>
-                <version>0</version>
-                <wantNonLocal>1</wantNonLocal>
-                <debug>1</debug>
-                <option>
-                    <name>OCDriverInfo</name>
-                    <state>1</state>
-                </option>
-                <option>
-                    <name>DoLogfile</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>LogFile</name>
-                    <state>$PROJ_DIR$\cspycomm.log</state>
-                </option>
-            </data>
-        </settings>
-        <settings>
             <name>PEMICRO_ID</name>
             <archiveVersion>2</archiveVersion>
             <data>
@@ -1007,7 +974,7 @@
             <name>STLINK_ID</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>7</version>
+                <version>4</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -1105,7 +1072,7 @@
                 </option>
                 <option>
                     <name>CCSTLinkJtagSpeedList</name>
-                    <version>2</version>
+                    <version>0</version>
                     <state>0</state>
                 </option>
                 <option>
@@ -1114,15 +1081,6 @@
                 </option>
                 <option>
                     <name>CCSTLinkDebugAccessPortRadio</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>CCSTLinkUseServerSelect</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>CCSTLinkProbeList</name>
-                    <version>1</version>
                     <state>0</state>
                 </option>
             </data>
@@ -1227,7 +1185,7 @@
             <name>XDS100_ID</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>8</version>
+                <version>6</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -1389,21 +1347,21 @@
                     <name>CCXds100SWOPort</name>
                     <state>1</state>
                 </option>
-                <option>
-                    <name>CCXDSTargetVccEnable</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>CCXDSTargetVoltage</name>
-                    <state>###Uninitialized###</state>
-                </option>
-                <option>
-                    <name>OCXDSDigitalStatesConfigFile</name>
-                    <state>1</state>
-                </option>
             </data>
         </settings>
         <debuggerPlugins>
+            <plugin>
+                <file>$TOOLKIT_DIR$\plugins\middleware\HCCWare\HCCWare.ewplugin</file>
+                <loadFlag>0</loadFlag>
+            </plugin>
+            <plugin>
+                <file>$TOOLKIT_DIR$\plugins\middleware\PercepioTraceExporter\PercepioTraceExportPlugin.ewplugin</file>
+                <loadFlag>0</loadFlag>
+            </plugin>
+            <plugin>
+                <file>$TOOLKIT_DIR$\plugins\rtos\AVIX\AVIX.ENU.ewplugin</file>
+                <loadFlag>0</loadFlag>
+            </plugin>
             <plugin>
                 <file>$TOOLKIT_DIR$\plugins\rtos\CMX\CmxArmPlugin.ENU.ewplugin</file>
                 <loadFlag>0</loadFlag>
@@ -1417,19 +1375,7 @@
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\FreeRtos\FreeRtosArmPlugin.ENU.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\HWRTOSplugin\HWRTOSplugin.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\Mbed\MbedArmPlugin.ENU.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\Mbed\MbedArmPlugin2.ENU.ewplugin</file>
+                <file>$TOOLKIT_DIR$\plugins\rtos\MQX\MQXRtosPlugin.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
@@ -1437,19 +1383,11 @@
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\RemedyRtosViewer\RemedyRtosViewer.ewplugin</file>
+                <file>$TOOLKIT_DIR$\plugins\rtos\Quadros\Quadros_EWB7_Plugin.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
                 <file>$TOOLKIT_DIR$\plugins\rtos\SafeRTOS\SafeRTOSPlugin.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\SMX\smxAwareIarArm8b.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\SMX\smxAwareIarArm8bBE.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
@@ -1473,11 +1411,11 @@
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
-                <file>$EW_DIR$\common\plugins\Orti\Orti.ENU.ewplugin</file>
-                <loadFlag>0</loadFlag>
+                <file>$EW_DIR$\common\plugins\CodeCoverage\CodeCoverage.ENU.ewplugin</file>
+                <loadFlag>1</loadFlag>
             </plugin>
             <plugin>
-                <file>$EW_DIR$\common\plugins\TargetAccessServer\TargetAccessServer.ENU.ewplugin</file>
+                <file>$EW_DIR$\common\plugins\Orti\Orti.ENU.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
@@ -1496,7 +1434,7 @@
             <name>C-SPY</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>32</version>
+                <version>28</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -1668,6 +1606,14 @@
                     <state></state>
                 </option>
                 <option>
+                    <name>OCMulticoreMaster</name>
+                    <state>0</state>
+                </option>
+                <option>
+                    <name>OCMulticorePort</name>
+                    <state>53461</state>
+                </option>
+                <option>
                     <name>OCMulticoreWorkspace</name>
                     <state></state>
                 </option>
@@ -1686,26 +1632,6 @@
                 <option>
                     <name>OCAttachSlave</name>
                     <state>0</state>
-                </option>
-                <option>
-                    <name>MassEraseBeforeFlashing</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>OCMulticoreNrOfCoresSlave</name>
-                    <state>1</state>
-                </option>
-                <option>
-                    <name>OCMulticoreAMPConfigType</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>OCMulticoreSessionFile</name>
-                    <state></state>
-                </option>
-                <option>
-                    <name>OCTpiuBaseOption</name>
-                    <state>1</state>
                 </option>
             </data>
         </settings>
@@ -2443,27 +2369,6 @@
             </data>
         </settings>
         <settings>
-            <name>NULINK_ID</name>
-            <archiveVersion>2</archiveVersion>
-            <data>
-                <version>0</version>
-                <wantNonLocal>1</wantNonLocal>
-                <debug>0</debug>
-                <option>
-                    <name>OCDriverInfo</name>
-                    <state>1</state>
-                </option>
-                <option>
-                    <name>DoLogfile</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>LogFile</name>
-                    <state>$PROJ_DIR$\cspycomm.log</state>
-                </option>
-            </data>
-        </settings>
-        <settings>
             <name>PEMICRO_ID</name>
             <archiveVersion>2</archiveVersion>
             <data>
@@ -2492,7 +2397,7 @@
             <name>STLINK_ID</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>7</version>
+                <version>4</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -2590,7 +2495,7 @@
                 </option>
                 <option>
                     <name>CCSTLinkJtagSpeedList</name>
-                    <version>2</version>
+                    <version>0</version>
                     <state>0</state>
                 </option>
                 <option>
@@ -2599,15 +2504,6 @@
                 </option>
                 <option>
                     <name>CCSTLinkDebugAccessPortRadio</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>CCSTLinkUseServerSelect</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>CCSTLinkProbeList</name>
-                    <version>1</version>
                     <state>0</state>
                 </option>
             </data>
@@ -2712,7 +2608,7 @@
             <name>XDS100_ID</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>8</version>
+                <version>6</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -2874,21 +2770,21 @@
                     <name>CCXds100SWOPort</name>
                     <state>1</state>
                 </option>
-                <option>
-                    <name>CCXDSTargetVccEnable</name>
-                    <state>0</state>
-                </option>
-                <option>
-                    <name>CCXDSTargetVoltage</name>
-                    <state>###Uninitialized###</state>
-                </option>
-                <option>
-                    <name>OCXDSDigitalStatesConfigFile</name>
-                    <state>1</state>
-                </option>
             </data>
         </settings>
         <debuggerPlugins>
+            <plugin>
+                <file>$TOOLKIT_DIR$\plugins\middleware\HCCWare\HCCWare.ewplugin</file>
+                <loadFlag>0</loadFlag>
+            </plugin>
+            <plugin>
+                <file>$TOOLKIT_DIR$\plugins\middleware\PercepioTraceExporter\PercepioTraceExportPlugin.ewplugin</file>
+                <loadFlag>0</loadFlag>
+            </plugin>
+            <plugin>
+                <file>$TOOLKIT_DIR$\plugins\rtos\AVIX\AVIX.ENU.ewplugin</file>
+                <loadFlag>0</loadFlag>
+            </plugin>
             <plugin>
                 <file>$TOOLKIT_DIR$\plugins\rtos\CMX\CmxArmPlugin.ENU.ewplugin</file>
                 <loadFlag>0</loadFlag>
@@ -2902,19 +2798,7 @@
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\FreeRtos\FreeRtosArmPlugin.ENU.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\HWRTOSplugin\HWRTOSplugin.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\Mbed\MbedArmPlugin.ENU.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\Mbed\MbedArmPlugin2.ENU.ewplugin</file>
+                <file>$TOOLKIT_DIR$\plugins\rtos\MQX\MQXRtosPlugin.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
@@ -2922,19 +2806,11 @@
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\RemedyRtosViewer\RemedyRtosViewer.ewplugin</file>
+                <file>$TOOLKIT_DIR$\plugins\rtos\Quadros\Quadros_EWB7_Plugin.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
                 <file>$TOOLKIT_DIR$\plugins\rtos\SafeRTOS\SafeRTOSPlugin.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\SMX\smxAwareIarArm8b.ewplugin</file>
-                <loadFlag>0</loadFlag>
-            </plugin>
-            <plugin>
-                <file>$TOOLKIT_DIR$\plugins\rtos\SMX\smxAwareIarArm8bBE.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
@@ -2958,11 +2834,11 @@
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
-                <file>$EW_DIR$\common\plugins\Orti\Orti.ENU.ewplugin</file>
-                <loadFlag>0</loadFlag>
+                <file>$EW_DIR$\common\plugins\CodeCoverage\CodeCoverage.ENU.ewplugin</file>
+                <loadFlag>1</loadFlag>
             </plugin>
             <plugin>
-                <file>$EW_DIR$\common\plugins\TargetAccessServer\TargetAccessServer.ENU.ewplugin</file>
+                <file>$EW_DIR$\common\plugins\Orti\Orti.ENU.ewplugin</file>
                 <loadFlag>0</loadFlag>
             </plugin>
             <plugin>
