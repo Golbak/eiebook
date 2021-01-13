@@ -57,6 +57,29 @@ typedef const USHORT uc8;   /*!< @brief EiE standard variable type name for read
 
 typedef void(*fnCode_type)(void);      /*!< @brief EiE standard variable type name for function pointer with no arguments */
 
+/*! 
+@enum PortOffsetType
+@brief Processor-specific port address offsets.
+*/
+typedef enum {PORTA = 0, PORTB = 0x80} PortOffsetType;               
+
+/*! 
+@enum GpioActiveType
+@brief Real names for active low vs. active high GPIO.
+*/
+typedef enum {ACTIVE_LOW = 0, ACTIVE_HIGH = 1} GpioActiveType;      
+
+/*! 
+@struct PinConfigurationType
+@brief Parameters necessary to fully describe a GPIO line.
+*/
+typedef struct
+{
+  u32 u32BitPosition;             /*!< @brief Pin bit position within port */
+  PortOffsetType ePort;           /*!< @brief Pin port */
+  GpioActiveType eActiveState;    /*!< @brief Pin hardware active type */
+}PinConfigurationType;
+
 #ifndef __cplusplus
 typedef enum {FALSE = 0, TRUE = !FALSE} bool;  /*!< @brief EiE standard variable type name for boolean */
 #endif

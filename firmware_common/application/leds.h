@@ -1,24 +1,38 @@
 /*!*********************************************************************************************************************
-@file user_app1.h                                                                
-@brief Header file for user_app1
-----------------------------------------------------------------------------------------------------------------------
-To start a new task using this user_app1 as a template:
-1. Follow the instructions at the top of user_app1.c
-2. Use ctrl-h to find and replace all instances of "user_app1" with "yournewtaskname"
-3. Use ctrl-h to find and replace all instances of "UserApp1" with "YourNewTaskName"
-4. Use ctrl-h to find and replace all instances of "USER_APP1" with "YOUR_NEW_TASK_NAME"
-5. Add "#include yournewtaskname.h" to configuration.h
-6. Add/update any special configurations required in configuration.h (e.g. peripheral assignment and setup values)
-7. Delete this text (between the dashed lines)
-----------------------------------------------------------------------------------------------------------------------
+@file leds.h                                                                
+@brief Header file for leds
 **********************************************************************************************************************/
 
-#ifndef __USER_APP1_H
-#define __USER_APP1_H
+#ifndef __LEDS_H
+#define __LEDS_H
 
 /**********************************************************************************************************************
 Type Definitions
 **********************************************************************************************************************/
+
+/*! 
+@enum LedControlType
+@brief The mode determines how the task manages the LED */
+typedef enum {LED_NORMAL_MODE, LED_BLINK_MODE} LedModeType;  
+
+/*! 
+@enum LedRateType
+@brief Standard blinky values for blinking.  
+Other blinking rate values may be added as required.  The values are the toggling period in ms.
+*/
+typedef enum {LED_0HZ = 0, LED_0_5HZ = 1000, LED_1HZ = 500, LED_2HZ = 250, LED_4HZ = 125, LED_8HZ = 63
+             } LedRateType;
+
+/*! 
+@struct LedControlType
+@brief Required parameters for the task to track what each LED is doing. 
+*/
+typedef struct 
+{
+  LedModeType eMode;              /*!< @brief Current mode */
+  LedRateType eRate;              /*!< @brief Current rate */
+  u16 u16Count;                   /*!< @brief Value of current duty cycle counter */
+}LedControlType;
 
 
 /**********************************************************************************************************************
@@ -28,13 +42,16 @@ Function Declarations
 /*------------------------------------------------------------------------------------------------------------------*/
 /*! @publicsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
-
+void LedOn(LedNameType eLED_);
+void LedOff(LedNameType eLED_);
+void LedToggle(LedNameType eLED_);
+void LedBlink(LedNameType eLED_, LedRateType eBlinkRate_);
 
 /*------------------------------------------------------------------------------------------------------------------*/
 /*! @protectedsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
-void UserApp1Initialize(void);
-void UserApp1RunActiveState(void);
+void LedsInitialize(void);
+void LedsRunActiveState(void);
 
 
 /*------------------------------------------------------------------------------------------------------------------*/
@@ -45,8 +62,8 @@ void UserApp1RunActiveState(void);
 /***********************************************************************************************************************
 State Machine Declarations
 ***********************************************************************************************************************/
-static void UserApp1SM_Idle(void);    
-static void UserApp1SM_Error(void);         
+static void LedsSM_Idle(void);    
+static void LedsSM_Error(void);         
 
 
 /**********************************************************************************************************************
@@ -55,7 +72,7 @@ Constants / Definitions
 
 
 
-#endif /* __USER_APP1_H */
+#endif /* __LEDS_H */
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* End of File                                                                                                        */
 /*--------------------------------------------------------------------------------------------------------------------*/

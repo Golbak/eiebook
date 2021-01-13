@@ -12,10 +12,12 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <DebugChecksum>
-        <Checksum>1555575824</Checksum>
+        <Checksum>3419487996</Checksum>
     </DebugChecksum>
     <CodeCoverage>
-        <Enabled>_ 0</Enabled>
+        <Enabled>0</Enabled>
+        <ShowSource>0</ShowSource>
+        <HideCovered>0</HideCovered>
     </CodeCoverage>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -25,9 +27,12 @@
         <ShowArgs>0</ShowArgs>
     </CallStack>
     <Disassembly>
+        <InstrCount>0</InstrCount>
         <MixedMode>1</MixedMode>
     </Disassembly>
     <JLinkDriver>
+        <jlinkResetStyle>12</jlinkResetStyle>
+        <jlinkResetStrategy>0</jlinkResetStrategy>
         <CStepIntDis>_ 0</CStepIntDis>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </JLinkDriver>
@@ -65,35 +70,36 @@
         <FreqHi>0</FreqHi>
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
-    <Registers>
-        <regBase0>R0 10</regBase0>
-        <regBase1>R11 10</regBase1>
-    </Registers>
+    <Trace1>
+        <Enabled>0</Enabled>
+        <ShowSource>1</ShowSource>
+    </Trace1>
     <watch_formats>
         <Fmt0>{W}1:0x400E0E00	4	0</Fmt0>
         <Fmt1>{W}1:PIOB_PSR	4	0</Fmt1>
         <Fmt2>{W}3:G_u32SystemFlags	4	0</Fmt2>
         <Fmt3>{W}3:G_u32SystemTime1ms	3	0</Fmt3>
+        <Fmt4>{W}3:i	3	0</Fmt4>
+        <Fmt5>{W}3:u8Counter	3	0</Fmt5>
     </watch_formats>
-    <Trace1>
-        <Enabled>0</Enabled>
-        <ShowSource>1</ShowSource>
-    </Trace1>
+    <Registers>
+        <regBase0>R0 10</regBase0>
+        <regBase1>R11 10</regBase1>
+    </Registers>
+    <TermIOLog>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+    </TermIOLog>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
         <Category>_ 0</Category>
     </LogFile>
-    <TermIOLog>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-    </TermIOLog>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>1</Mode>
         <Graph>0</Graph>
         <Symbiont>0</Symbiont>
-        <Exclusions />
     </DriverProfiling>
     <CallStackLog>
         <Enabled>0</Enabled>

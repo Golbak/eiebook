@@ -9,7 +9,7 @@ extern	void kill_x_cycles(u32);
 
 /***********************************************************************************************************************
 Global variable definitions with scope across entire project.
-All Global variable names shall start with "G_"
+All Global variable names shall start with "G_<type>"
 ***********************************************************************************************************************/
 /* New variables */
 volatile u32 G_u32SystemTime1ms = 0;     /*!< @brief Global system time incremented every ms, max 2^32 (~49 days) */
@@ -41,19 +41,25 @@ void main(void)
   ClockSetup();
   GpioSetup();
   
+  /* Driver initialization */
+  UserApp1Initialize();
+  LedsInitialize();
+  
   /* Super loop */  
   while(1)
   {
     WATCHDOG_BONE();
+    
+    /* Drivers */
+    UserApp1RunActiveState();
+    LedsRunActiveState();
         
     /* System sleep */
-    HEARTBEAT_OFF();
     do
     {
       SystemSleep();
     } while(G_u32SystemFlags & _SYSTEM_SLEEPING);
     
-    HEARTBEAT_ON();
   } /* end while(1) main super loop */
   
 } /* end main() */
