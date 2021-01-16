@@ -49,7 +49,8 @@ void LedOn(LedNameType eLED_);
 void LedOff(LedNameType eLED_);
 void LedToggle(LedNameType eLED_);
 void LedBlink(LedNameType eLED_, LedRateType eBlinkRate_);
-
+LedModeType LedMode(LedNameType eLED_);
+LedRateType LedRate(LedNameType eLED_);
 
 /*------------------------------------------------------------------------------------------------------------------*/
 /*! @protectedsection */                                                                                            

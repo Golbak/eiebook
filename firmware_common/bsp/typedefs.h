@@ -1,7 +1,6 @@
 /*!**********************************************************************************************************************
 @file typedefs.h                                                                
 @brief Type definitions for use with the system.
-
 The EiE system tries to simplify the most common variable types and remove ambiguity 
 over type size or signed/unsigned.  
 **********************************************************************************************************************/
@@ -12,9 +11,7 @@ over type size or signed/unsigned.
 
 /**********************************************************************************************************************
 Type Definitions
-
 The following are equivalent in this system:
-
 Legacy C        Historical       stdint.h       EiE
 unsigned char   UCHAR            uint8_t        u8
 unsigned short  USHORT           uint16_t       u16
@@ -22,7 +19,6 @@ unsigned long   ULONG            uint32_t       u32
 signed char     CHAR             int8_t         s8
 signed short    SHORT            int16_t        s16
 signed long     LONG             int32_t        s32
-
 Custom types should be defined with "Type" as the last word in the typedef.
 **********************************************************************************************************************/
 
@@ -61,6 +57,28 @@ typedef void(*fnCode_type)(void);      /*!< @brief EiE standard variable type na
 typedef enum {FALSE = 0, TRUE = !FALSE} bool;  /*!< @brief EiE standard variable type name for boolean */
 #endif
 
+/*! 
+@enum PortOffsetType
+@brief Processor-specific port address offsets.
+*/
+typedef enum {PORTA = 0, PORTB = 0x80} PortOffsetType;               
+
+/*! 
+@enum GpioActiveType
+@brief Real names for active low vs. active high GPIO.
+*/
+typedef enum {ACTIVE_LOW = 0, ACTIVE_HIGH = 1} GpioActiveType;      
+
+/*! 
+@struct PinConfigurationType
+@brief Parameters necessary to fully describe a GPIO line.
+*/
+typedef struct
+{
+  u32 u32BitPosition;             /*!< @brief Pin bit position within port */
+  PortOffsetType ePort;           /*!< @brief Pin port */
+  GpioActiveType eActiveState;    /*!< @brief Pin hardware active type */
+}PinConfigurationType;
+
 
 #endif /* __TYPEDEFS_H */
-

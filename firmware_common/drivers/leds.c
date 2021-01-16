@@ -57,7 +57,7 @@ extern volatile u32 G_u32SystemTime1s;                 /*!< @brief From main.c *
 extern volatile u32 G_u32SystemFlags;                  /*!< @brief From main.c */
 extern volatile u32 G_u32ApplicationFlags;             /*!< @brief From main.c */
 
-extern const LedConfigurationType G_asBspLedConfigurations[U8_TOTAL_LEDS]; /*!< @brief from board-specific file */
+extern const PinConfigurationType G_asBspLedConfigurations[U8_TOTAL_LEDS]; /*!< @brief from board-specific file */
 
 
 /***********************************************************************************************************************
@@ -109,7 +109,7 @@ void LedOn(LedNameType eLED_)
   u32 *pu32OnAddress;
 
   /* Configure set and clear addresses */
-  if(G_asBspLedConfigurations[eLED_].eActiveState == LED_ACTIVE_HIGH)
+  if(G_asBspLedConfigurations[eLED_].eActiveState == ACTIVE_HIGH)
   {
     /* Active high LEDs use SODR to turn on */
     pu32OnAddress = (u32*)(&(AT91C_BASE_PIOA->PIO_SODR) + G_asBspLedConfigurations[(u8)eLED_].ePort);
@@ -160,7 +160,7 @@ void LedOff(LedNameType eLED_)
   u32 *pu32OffAddress;
 
   /* Configure set and clear addresses */
-  if(G_asBspLedConfigurations[eLED_].eActiveState == LED_ACTIVE_HIGH)
+  if(G_asBspLedConfigurations[eLED_].eActiveState == ACTIVE_HIGH)
   {
     /* Active high LEDs use CODR to turn off */
     pu32OffAddress = (u32*)(&(AT91C_BASE_PIOA->PIO_CODR) + G_asBspLedConfigurations[(u8)eLED_].ePort);
@@ -213,7 +213,7 @@ void LedToggle(LedNameType eLED_)
   *pu32Address ^= G_asBspLedConfigurations[(u8)eLED_].u32BitPosition;
   
   /* Set the LED to LED_NORMAL_MODE mode */
-	Led_asControl[(u8)eLED_].eMode = LED_NORMAL_MODE;
+  Led_asControl[(u8)eLED_].eMode = LED_NORMAL_MODE;
 
 } /* end LedToggle() */
 
@@ -247,6 +247,47 @@ void LedBlink(LedNameType eLED_, LedRateType eBlinkRate_)
 	Led_asControl[(u8)eLED_].u16Count = eBlinkRate_;
 
 } /* end LedBlink() */
+
+
+/*!----------------------------------------------------------------------------------------------------------------------
+@fn LedModeType LedMode(LedNameType eLED_)
+
+@brief Gets eLED_ actual mode.
+
+The LED mode can be NORMAL or BLINK.  
+
+Requires:
+@param eLED_ is a valid LED index
+
+Promises:
+- Returns the actual mode of the eLED_
+
+*/
+LedModeType LedMode(LedNameType eLED_)
+{
+  return Led_asControl[(u8)eLED_].eMode;
+	
+} /* end LedMode() */
+
+/*!----------------------------------------------------------------------------------------------------------------------
+@fn LedRateType LedRate(LedNameType eLED_)
+
+@brief Gets eLED_ actual rate.
+
+The LED rate can be LED_0HZ, LED_0_5HZ, LED_1HZ, LED_2HZ, LED_4HZ o LED_8HZ.
+
+Requires:
+@param eLED_ is a valid LED index
+
+Promises:
+- Returns the actual rate of the eLED_
+
+*/
+LedRateType LedRate(LedNameType eLED_)
+{
+  return Led_asControl[(u8)eLED_].eRate;
+	
+} /* end LedRate() */
 
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -347,7 +388,7 @@ static void LedSM_Idle(void)
 {
   u32 *pu32Address;
   
-	/* Loop through each LED to check for blinkers */
+  /* Loop through each LED to check for blinkers */
   for(u8 i = 0; i < U8_TOTAL_LEDS; i++)
   {
     /* Check if LED is in LED_BLINK_MODE mode */

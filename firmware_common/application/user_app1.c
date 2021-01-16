@@ -142,7 +142,70 @@ State Machine Function Definitions
 */
 static void UserApp1SM_Idle(void)
 {
+  if( IsButtonPressed(BUTTON0) )
+  {
+    LedOn(WHITE);
+  }
+  else
+  {
+    LedOff(WHITE);
+  }
+     
+  if( IsButtonPressed(BUTTON1) )
+  {
+    LedOn(PURPLE);
+  }
+  else
+  {
+    LedOff(PURPLE);
+  }
+        
+  if( IsButtonPressed(BUTTON2) )
+  {
+    LedOn(BLUE);
+  }
+  else
+  {
+    LedOff(BLUE);
+  }
+           
+  if( IsButtonPressed(BUTTON3) )
+  {
+    LedOn(CYAN);
+  }
+  else
+  {
+    LedOff(CYAN);
+  }
+  
+  if( WasButtonPressed(BUTTON0) && IsButtonHeld(BUTTON0,(u32) 1000) )
+  {
+    if( (LedMode(GREEN) == LED_NORMAL_MODE) || (LedRate(GREEN) != LED_4HZ) )
+    {
+      LedBlink(GREEN, LED_4HZ);
+    }
+    else
+    {
+      LedOff(GREEN);
+    }
+    
+    ButtonAcknowledge(BUTTON0);
+  }
 
+  if( WasButtonPressed(BUTTON1) && IsButtonHeld(BUTTON1,(u32) 1000) )
+  {
+    if( (LedMode(GREEN) == LED_NORMAL_MODE) || (LedRate(GREEN) != LED_8HZ) )
+    {
+      LedBlink(GREEN, LED_8HZ);
+    }
+    else
+    {
+      LedOff(GREEN);
+    }
+    
+    ButtonAcknowledge(BUTTON1);
+  }
+  
 } /* end UserApp1SM_Idle() */
     
 

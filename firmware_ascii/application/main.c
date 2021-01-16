@@ -40,10 +40,11 @@ void main(void)
   WatchDogSetup(); 
   ClockSetup();
   GpioSetup();
+  InterruptSetup();
   
   /* Driver initialization */
   LedInitialize();
-
+  ButtonInitialize();
 
   /* Application initialization */
   UserApp1Initialize();
@@ -55,6 +56,7 @@ void main(void)
 
     /* Drivers */
     LedRunActiveState();
+    ButtonRunActiveState();
     
     /* Applications */
     UserApp1RunActiveState();
